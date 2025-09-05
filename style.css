@@ -1,0 +1,280 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    perspective: 1000px;
+}
+
+.carta {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    background: #fff;
+    border: 2px solid #e74c3c;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s ease, opacity 1s ease;
+    font-size: 16px;
+    padding: 15px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.carta.aberta {
+    transform: translateX(-200px);
+    opacity: 0;
+}
+
+.pedido {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #e74c3c;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    font-size: 24px;
+    font-weight: bold;
+    color: #e74c3c;
+    transition: all 1s ease;
+    z-index: 30;
+}
+
+.pedido.mostrar {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+button{
+    color: #e74c3c;
+    border: 2px solid#e74c3c;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 7px;
+}
+
+.botoes {
+    margin-top: 20px;
+}
+
+.botoes button{
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+}
+
+#simbtn {
+  background-color: #ff4da6;
+  color: white;
+}
+
+#naobtn {
+  background-color: #999;
+  color: white;
+}
+
+.botoes button:hover {
+    transform: scale(1.1);
+}
+
+.cortina {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1000;
+    transition: top 2s ease;
+}
+
+#estrelas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#estrelaspenduradas, #estrelascomimg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* para não interferir em cliques */
+
+}
+
+.estrela {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 
+        79% 91%, 50% 70%, 21% 91%, 32% 57%, 
+        2% 35%, 39% 35%);
+}
+
+.fio {
+    position: absolute;
+    width: 2px;
+    background:white;
+    top: 0;
+}
+
+.estrela-img {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 1003;
+    pointer-events: none;
+}
+
+.envelope {
+    position: relative;
+    width: 480px;
+    height: 300px;
+    margin: 0 auto;
+    cursor: pointer;
+    perspective: 1000px;
+    z-index: 5;
+    overflow: hidden;
+    
+}
+
+.envelope .carta {
+    position: absolute;
+    bottom: -100%; /* começa dentro do envelope */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 380px;
+    height: auto;
+    background: #fff;
+    border: 2px solid #e74c3c;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+    z-index: 1; /* começa atrás da tampa */
+    transition: bottom 1s ease, bottom 1s ease, transform 1s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+
+}
+
+.envelope .tampa{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #f4a261;
+    transform-origin: top center;
+    z-index: 3;
+    border: 2px solid #b08968;
+    transition: transform 0.9s ease;
+}
+
+.envelope .corpo{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: #f7c59f;
+    border: 2px solid #b08968;
+    z-index: 2;
+}
+
+.envelope .container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+
+
+.corpo {
+    width: 100%;
+    height: 100%;
+    background: #f7c59f;
+    border: 2px solid  #b08968;
+    position: relative;
+    z-index: 1;
+}
+
+.tampa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#f4a261;
+    border: 2px solid #b08968;
+    transform-origin: top;
+    transition: transform 1s ease;
+    z-index: 2;
+}
+
+.envelope.open .carta{
+    transform: translateY(-140deg);
+}
+
+.envelope.abrir .tampa{
+    transform: rotateX(-180deg);
+}
+
+.envelope.abrir .carta{
+    bottom: 50px; /* carta sobe */
+    transform: translateX(-50%) scale(1.05);
+}
+
+.pedido.mostrar {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.pedido.mostrar + .carta,
+.pedido.mostrar ~ .carta {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.overflow-carta {
+    position: absolute;
+    inset: 0;
+    overflow: hidden; /* esconde a carta antes da animação */
+    z-index: 1;
+}
